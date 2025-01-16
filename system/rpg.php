@@ -13,28 +13,20 @@ class rpg
         ob_start();
     }
 
-    public static function render($name, $data = array())
+    public static function view($name, $data = null)
     {
-        if (is_array($data))
+        if (is_array($data) && is_file(settings::$root.'/app/views/'.$name.'.php'))
         {
             extract($data);
-        }
-
-        if (is_file(settings::$root.'/app/views/'.$name.'.php'))
-        {
             require settings::$root.'/app/views/'.$name.'.php';
         }
-    }
-
-    public static function view($name, $data = array())
-    {
-        $file = file_get_contents(settings::$root."/app/views/".$name.".html");
-
-        if (is_array($data))
+        else if (is_file(settings::$root."/app/views/".$name.".html") && is_array($data) || is_object($data))
         {
+            $file = file_get_contents(settings::$root."/app/views/".$name.".html");
+
             foreach($data as $content => $value)
             {
-                if (is_array($value))
+                if (is_array($value) || is_object($value))
                 {
                     foreach($value as $key => $val)
                     {
@@ -46,14 +38,13 @@ class rpg
                     $file = str_replace("{{".$content."}}", $value, $file);
                 }
             }
+
+            echo $file;
         }
-
-        echo $file;
-    }
-
-    public static function section($name)
-    {
-        echo file_get_contents(settings::$root."/app/views/".$name.".html");
+        else if (is_file(settings::$root."/app/views/".$name.".html") && $data == null)
+        {
+            echo file_get_contents(settings::$root."/app/views/".$name.".html");
+        }
     }
 
     public static function model($name)
