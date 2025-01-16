@@ -174,43 +174,13 @@ abstract class model
 
     public function fetch($array)
     {
-        if (gettype($array) == "object")
-        {
-            return $this->fetch_object($array);
-        }
-
-        if (gettype($array) == "array")
-        {
-            return $this->fetch_array($array);
-        }
-    }
-
-    public function fetch_array($array)
-    {
-        $result = array();
-
-        for ($i = 0; $i < count($array); $i++)
-        {
-            $data = array();
-
-            foreach ($array[$i] as $key => $val)
-            {
-                $data += [$key => $val];
-            }
-
-            $result[$i] = $data;
-        }
-
-        return $result;
-    }
-
-    public function fetch_object($array)
-    {
-        $data = array();
+        $data = new stdClass;
+        $super = "_";
 
         foreach ($array as $key => $val)
         {
-            $data += [$key => $val];
+            $key = $super.$key;
+            $data->$key = $val;
         }
 
         return $data;
