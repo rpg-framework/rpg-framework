@@ -5,26 +5,36 @@
 class index extends controller
 {
 
+    // For model
+    protected $blogs;
+
     public function run()
     {
+        // Model usage
+        $this->blogs = $this->model("blogs");
+        $array = $this->blogs->all();
+        
         // Use of embedded functions
         self::dump($array);
 
         // OR
+
+        $object = new stdClass;
+        $object->carousel = $this->blogs->carousel("0"); // :) Others
 
         $this->dump($object);
 
         // -----
 
         // Array usage
-        $data["title"] = "Welcome to the Home Page";
+        $data["title"] = ucwords($array["title"]);
         $data["base_url"] = settings::$scheme."://".settings::$host;
 
         // OR
 
         // Object usage
         $data = new stdClass;
-        $data->title = "Welcome to the Home Page";
+        $data->title = ucwords($object->title);
         $data->base_url = settings::$scheme."://".settings::$host;
 
         // The file views/parts/header.php or views/parts/header.html is required.
