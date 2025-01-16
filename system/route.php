@@ -40,7 +40,15 @@ class route
 
     public static function error()
     {
-        echo file_get_contents(settings::$root."/system/templates/404.html");
+        if (is_file(settings::$root."/app/controllers/".settings::$error.".php"))
+        {
+            require settings::$root."/app/controllers/".settings::$error.".php";
+            call_user_func([new settings::$error, "run"]);
+        }
+        else
+        {
+            echo file_get_contents(settings::$root."/system/templates/404.html");
+        }
     }
 
 }
