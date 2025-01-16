@@ -38,7 +38,9 @@ class settings
     // Constants
     private static $debug    = 0;
 
-    private static $lang     = "tr_TR.UTF-8";
+    public static $lang      = "tr";
+
+    private static $language = "tr_TR.UTF-8";
 
     private static $timezone = "Europe/Istanbul";
 
@@ -56,12 +58,15 @@ class settings
     // Default Index
     public static $index     = "index";
 
+    // Default Error
+    public static $error     = "not_found";
+
     public function __construct()
     {
         error_reporting(E_ALL);
         ini_set("display_errors", self::$debug);
 
-        setlocale(LC_ALL, self::$lang);
+        setlocale(LC_ALL, self::$language);
         date_default_timezone_set(self::$timezone);
 
         self::server();
