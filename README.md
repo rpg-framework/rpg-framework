@@ -1,40 +1,13 @@
 # php-rpg
 A small and fast PHP framework.
 
-## Directory Structure:
-
-php-rpg/
-├── app
-│   ├── base
-│   │   └── controller.php
-│   ├── controllers
-│   ├── models
-│   └── views
-├── public
-│   ├── favicon.ico
-│   ├── index.php
-│   └── robots.txt
-└── system
-├── databases
-│   ├── model.php
-│└── mysql.php
-├── modules
-├── templates
-│ ├── 404.html
-│ └── index.html
-├── log.php
-├── route.php
-├── rpg.php
-├── run.php
-└ ── settings.php
-
 ## System Settings
 
 System settings are defined in settings.php. The settings you can change are Constants, Database, and Defaults.
 
-Constants -> Region, language, debug definitions
-Database  -> Database connection information
-Defaults  -> Project defaults
+* Constants -> Region, language, debug definitions
+* Database  -> Database connection information
+* Defaults  -> Project defaults
 
 ## Root Directory
 
@@ -52,7 +25,7 @@ Example for example.com/contact:
 
 - Create file: app/controllers/contact.php
 - File content:
-
+'''
 class contact extends controller
 {
     public function run()
@@ -60,7 +33,7 @@ class contact extends controller
         echo "Hello World !";
     }
 }
-
+'''
 Inherited controller class app/ base/controller.php. Used as a base controller to avoid rewriting the methods you need to use on every page.
 
 ## Defaults
