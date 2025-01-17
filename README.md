@@ -25,7 +25,7 @@ Example for example.com/contact:
 
 - Create file: app/controllers/contact.php
 - File content:
-'''
+```
 class contact extends controller
 {
     public function run()
@@ -33,7 +33,7 @@ class contact extends controller
         echo "Hello World !";
     }
 }
-'''
+```
 Inherited controller class app/ base/controller.php. Used as a base controller to avoid rewriting the methods you need to use on every page.
 
 ## Defaults
