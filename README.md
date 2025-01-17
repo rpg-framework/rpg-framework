@@ -42,4 +42,4 @@ Defaults are located in system/settings.php. You can enter as many defaults as y
 
 $index, is the page that receives incoming links to your website. If you want your website homepage to be accessed as "example.com" and "example.com/index", do not change the default value. You need to create app/controllers/index.php.
 
-$${\color{lightblue}$error}$$, when an address is not found This is the page that your website will call. The default value is "not_found". You can call any error page you want by creating app/controllers/not_found.php.
+$error, when an address is not found This is the page that your website will call. The default value is "not_found". You can call any error page you want by creating app/controllers/not_found.php.
