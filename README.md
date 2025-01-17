@@ -5,7 +5,7 @@ A small and fast PHP framework.
 
 System settings are defined in settings.php. The settings you can change are Constants, Database, and Defaults.
 
-* Constants -> Region, language, debug definitions
+* Constants -> Timezone, language, debug definitions
 * Database  -> Database connection information
 * Defaults  -> Project defaults
 
