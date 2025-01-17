@@ -38,8 +38,6 @@ class settings
     // Constants
     private static $debug    = 0;
 
-    public static $lang      = "tr";
-
     private static $language = "tr_TR.UTF-8";
 
     private static $timezone = "Europe/Istanbul";
@@ -55,10 +53,11 @@ class settings
     
     public static $db_name   = "";
 
-    // Default Index
+    // Defaults
+    public static $lang      = "tr";
+
     public static $index     = "index";
 
-    // Default Error
     public static $error     = "not_found";
 
     public function __construct()
