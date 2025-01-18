@@ -12,7 +12,7 @@ System settings are defined in settings.php. The settings you can change are Con
 
 ## Root Directory
 
-The root directory of your project is "public". The index.php inside it manages all routes. You can upload CSS, JS, webfonts, images, robots.txt, sitemap.xml, and all accessible resources to this directory.
+The root directory of your project is `public`. The index.php inside it manages all routes. You can upload CSS, JS, webfonts, images, robots.txt, sitemap.xml, and all accessible resources to this directory.
 
 ## Installation
 
@@ -20,9 +20,9 @@ You can clone the php-rpg repository, configure it for your web server, and run 
 
 ## Route Definition
 
-To define a route, a PHP class is created in app/controllers that contains the page name. The file and class name must be in lowercase. The "run" method is automatically executed when the address is accessed.
+To define a route, a PHP class is created in `app/controllers` that contains the page name. The file and class name must be in lowercase. The `run` method is automatically executed when the address is accessed.
 
-Example for example.com/contact:
+Example for `example.com/contact`:
 
 Create file: `app/controllers/contact.php`
 
@@ -44,11 +44,11 @@ The controller class is inherited from `app/base/controller.php`. This serves as
 
 Defaults are located in `system/settings.php`. You can enter as many defaults as you want in this field. There are two important variables in the defaults: the `$index` and `$error` variables.
 
-   * `$index`: The page that receives incoming links to your website. If you want your homepage to be accessed as "example.com" or "example.com/index", do not change the default value. You need to create `app/controllers/index.php`.
+   * `$index`: The page that receives incoming links to your website. If you want your homepage to be accessed as `example.com` or `example.com/index`, do not change the default value. You need to create `app/controllers/index.php`.
 
-   * `$error`: The page that your website will call when an address is not found. The default value is "not_found". You can call any error page you want by creating `app/controllers/not_found.php`.
+   * `$error`: The page that your website will call when an address is not found. The default value is `not_found`. You can call any error page you want by creating `app/controllers/not_found.php`.
 
 ## Examples
 
   * Small scale project example - Documentation (Dual language [tr/en], Internal search, No database!)
-    For fixed and small projects, Corporate sites etc. fast development process. [rpg-docs]([https://pages.github.com/](https://github.com/fuatboluk/rpg-docs))
+    For fixed and small projects, Corporate sites etc. fast development process. [rpg-docs](https://github.com/fuatboluk/rpg-docs)
