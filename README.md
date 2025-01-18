@@ -1,4 +1,4 @@
-#php-rpg
+# php-rpg
 
 A small and fast PHP framework.
 
@@ -24,8 +24,8 @@ To define a route, a PHP class is created in app/controllers that contains the p
 
 Example for example.com/contact:
 
-    Create file: app/controllers/contact.php
-    File content:
+Create file: app/controllers/contact.php
+File content:
 ```
     class contact extends controller
     {
