@@ -25,7 +25,9 @@ To define a route, a PHP class is created in app/controllers that contains the p
 Example for example.com/contact:
 
 Create file: app/controllers/contact.php
+
 File content:
+
 ```
     class contact extends controller
     {
@@ -35,6 +37,7 @@ File content:
         }
     }
 ```
+
 The controller class is inherited from app/base/controller.php. This serves as a base controller to avoid rewriting methods you need to use on every page.
 
 ## Defaults
