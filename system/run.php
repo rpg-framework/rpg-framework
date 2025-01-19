@@ -10,7 +10,7 @@ $route = new route;
 $log = new log;
 
 // Database
-require __DIR__."/databases/mysql.php";
+require __DIR__."/databases/driver.php";
 require __DIR__."/databases/model.php";
 
 // Framework

@@ -13,7 +13,7 @@ abstract class model
 
     public function __construct()
     {
-        $this->db = new settings::$driver;
+        $this->db = new driver;
     }
 
     public function where($name, $operator, $value)

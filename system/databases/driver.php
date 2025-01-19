@@ -1,6 +1,6 @@
 <?php
 
-class mysql
+class driver
 {
 
     protected $cursor;

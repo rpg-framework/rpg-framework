@@ -5,7 +5,7 @@ class log
 
     public function request()
     {
-        $response = new stdClass();
+        $response = new stdClass;
 
         $response->status    = settings::$status;
         $response->time      = settings::$time;
