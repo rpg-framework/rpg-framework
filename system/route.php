@@ -21,14 +21,14 @@ class route
             if (is_file(settings::$root."/app/controllers/".$url[1].".php"))
             {
                 require settings::$root."/app/controllers/".$url[1].".php";
-                call_user_func([new $url[1], "run"]);
+                call_user_func([new $url[1], "main"]);
             }
             else if ($params[0] == "/")
             {
                 if (is_file(settings::$root."/app/controllers/".settings::$index.".php"))
                 {
                     require settings::$root."/app/controllers/".settings::$index.".php";
-                    call_user_func([new settings::$index, "run"]);
+                    call_user_func([new settings::$index, "main"]);
                 }
                 else
                 {
@@ -47,14 +47,14 @@ class route
             if (is_file(settings::$root."/app/controllers/".$url[1].".php"))
             {
                 require settings::$root."/app/controllers/".$url[1].".php";
-                call_user_func([new $url[1], "run"]);
+                call_user_func([new $url[1], "main"]);
             }
             else if (settings::$uri == "/")
             {
                 if (is_file(settings::$root."/app/controllers/".settings::$index.".php"))
                 {
                     require settings::$root."/app/controllers/".settings::$index.".php";
-                    call_user_func([new settings::$index, "run"]);
+                    call_user_func([new settings::$index, "main"]);
                 }
                 else
                 {
@@ -93,7 +93,7 @@ class route
         if (is_file(settings::$root."/app/controllers/".settings::$error.".php"))
         {
             require settings::$root."/app/controllers/".settings::$error.".php";
-            call_user_func([new settings::$error, "run"]);
+            call_user_func([new settings::$error, "main"]);
         }
         else
         {

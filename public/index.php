@@ -1,5 +1,5 @@
 <?php
 
-require __DIR__."/../system/run.php";
+require __DIR__."/../system/boot.php";
 
 $route->app();
