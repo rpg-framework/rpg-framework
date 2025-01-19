@@ -12,7 +12,8 @@ class route
         if ($get == true)
         {
             $params = explode("?", settings::$uri);
-            $param = explode("&", $params[1]);
+            $param = explode("&", security::xss_protection($params[1]));
+
             self::set($param);
 
             $url = explode("/", $params[0]);
@@ -70,6 +71,8 @@ class route
 
     public static function set($param = array())
     {
+        unset($_GET);
+    
         if (count($param) > 0)
         {
             foreach ($param as $value)

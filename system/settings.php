@@ -82,7 +82,7 @@ class settings
         self::$status   = $_SERVER["REDIRECT_STATUS"];
         self::$protocol = $_SERVER["SERVER_PROTOCOL"];
         self::$host     = $_SERVER["HTTP_HOST"];
-        self::$uri      = $_SERVER["REQUEST_URI"];
+        self::$uri      = urldecode($_SERVER["REQUEST_URI"]);
         self::$ip       = $_SERVER["REMOTE_ADDR"];
         self::$ua       = $_SERVER["HTTP_USER_AGENT"];
 
