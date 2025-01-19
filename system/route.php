@@ -7,29 +7,76 @@ class route
     {
         require settings::$root."/app/base/controller.php";
 
-        $url = explode("/", settings::$uri);
+        $get = stripos(settings::$uri, "?");
 
-        if (is_file(settings::$root."/app/controllers/".$url[1].".php"))
+        if ($get == true)
         {
-            require settings::$root."/app/controllers/".$url[1].".php";
-            call_user_func([new $url[1], "run"]);
-        }
-        else if (settings::$uri == "/")
-        {
-            if (is_file(settings::$root."/app/controllers/".settings::$index.".php"))
+            $params = explode("?", settings::$uri);
+            $param = explode("&", $params[1]);
+            self::set($param);
+
+            $url = explode("/", $params[0]);
+
+            if (is_file(settings::$root."/app/controllers/".$url[1].".php"))
             {
-                require settings::$root."/app/controllers/".settings::$index.".php";
-                call_user_func([new settings::$index, "run"]);
+                require settings::$root."/app/controllers/".$url[1].".php";
+                call_user_func([new $url[1], "run"]);
+            }
+            else if ($params[0] == "/")
+            {
+                if (is_file(settings::$root."/app/controllers/".settings::$index.".php"))
+                {
+                    require settings::$root."/app/controllers/".settings::$index.".php";
+                    call_user_func([new settings::$index, "run"]);
+                }
+                else
+                {
+                    self::welcome();
+                }
             }
             else
             {
-                self::welcome();
+                self::error();
             }
         }
         else
         {
-            self::error();
+            $url = explode("/", settings::$uri);
 
+            if (is_file(settings::$root."/app/controllers/".$url[1].".php"))
+            {
+                require settings::$root."/app/controllers/".$url[1].".php";
+                call_user_func([new $url[1], "run"]);
+            }
+            else if (settings::$uri == "/")
+            {
+                if (is_file(settings::$root."/app/controllers/".settings::$index.".php"))
+                {
+                    require settings::$root."/app/controllers/".settings::$index.".php";
+                    call_user_func([new settings::$index, "run"]);
+                }
+                else
+                {
+                    self::welcome();
+                }
+            }
+            else
+            {
+                self::error();
+            }
+        }
+        
+    }
+
+    public static function set($param = array())
+    {
+        if (count($param) > 0)
+        {
+            foreach ($param as $value)
+            {
+                $x = explode("=", $value);
+                $_GET[$x[0]] = $x[1];
+            }
         }
     }
 

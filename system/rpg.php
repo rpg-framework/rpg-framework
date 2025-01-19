@@ -65,10 +65,15 @@ class rpg
         }
     }
 
-    public static function dump($array = array())
+    public static function redirect($url)
+    {
+        return header("Location: ".settings::$scheme."://".settings::$host.$url);
+    }
+
+    public static function dump($data)
     {
         header("Content-Type: text/plain; charset=UTF-8");
-        print_r($array);
+        print_r($data);
         die();
     }
 
@@ -86,7 +91,19 @@ class rpg
         }
     }
 
-    public static function input($name = null)
+    public static function get($name = null)
+    {
+        if ($name != null)
+        {
+            return $_GET[$name];
+        }
+        else
+        {
+            return $_GET;
+        }
+    }
+
+    public static function post($name = null)
     {
         if ($name != null)
         {
@@ -96,11 +113,6 @@ class rpg
         {
             return $_POST;
         }
-    }
-
-    public static function redirect($url)
-    {
-        return header("Location: ".settings::$scheme."://".settings::$host.$url);
     }
 
     public static function close()
