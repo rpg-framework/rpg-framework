@@ -15,7 +15,7 @@ class log
         $request->request   = settings::$method." ".settings::$uri." ".settings::$protocol;
         $request->useragent = settings::$ua;
 
-        return json_encode($request, JSON_INVALID_UTF8_IGNORE || JSON_UNESCAPED_UNICODE);
+        return json_encode($request, JSON_INVALID_UTF8_IGNORE || JSON_FORCE_OBJECT);
     }
 
     public static function access()
@@ -23,18 +23,21 @@ class log
         return file_put_contents
         (
             settings::$root."/system/logs/access_logs-".settings::$date.".json",
-            "\n".self::request().",", FILE_APPEND | LOCK_EX
+            self::request()."\n", FILE_APPEND | LOCK_EX
         );
     }
 
-    public static function access_logs()
+    public static function access_logs($line = 10)
     {
         $log = file_get_contents
         (
             settings::$root."/system/logs/access_logs-".settings::$date.".json"
         );
 
-        $access_logs = "[".rtrim($log, ",")."\n]";
+        $parse = array_reverse(explode("\n", $log));
+        $build = implode(",", array_slice($parse, 0, $line + 2));
+
+        $access_logs = "[".ltrim($build, ",")."]";
         header("Content-Type: application/json");
 
         echo $access_logs;
