@@ -94,11 +94,3 @@ Defaults are located in `system/settings.php`. You can enter as many defaults as
    * `$index`: The page that receives incoming links to your website. If you want your homepage to be accessed as `example.com` or `example.com/index`, do not change the default value. You need to create `app/controllers/index.php`.
 
    * `$error`: The page that your website will call when an address is not found. The default value is `not_found`. You can call any error page you want by creating `app/controllers/not_found.php`.
-
-## Examples
-
-  * Small scale project example - Documentation (Dual language [tr/en], Internal search, No database!) Fast development process for fixed and small projects, Corporate sites etc. [rpg-docs](https://github.com/fuatboluk/rpg-docs)
-
-  * Medium scale project example - Blog (Dual language [tr/en], Database search, pagination, session and user management, comments and likes etc.) Coming soon!
-
-  * Large scale project example - E-Commerce (Dual language [tr/en], Database search, pagination, session and user management, comments and likes, notifications, admin panel etc.) Coming soon!
