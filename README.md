@@ -1,4 +1,4 @@
-# php-rpg
+# rpg-framework
 
 A small and fast PHP framework.
 
@@ -16,11 +16,58 @@ The root directory of your project is `public`. The index.php inside it manages 
 
 ## Installation
 
-You can clone the php-rpg repository, configure it for your web server, and run it. If you get a page that says "It works!", it is working. It includes the Nginx web server configuration.
+Clone the rpg-framework repository and upload it to the default directory of your web server.
+
+## Apache Configuration
+
+RPG comes with a `.htaccess` configuration in the `public` directory for Apache.
+
+## Nginx Configuration
+
+You can run the RPG Framework with the nginx configuration provided here.
+
+```
+    server {
+        listen 80;
+
+        server_name localhost;
+        root /var/www/html/rpg-framework/public;
+     
+        add_header X-Frame-Options "SAMEORIGIN";
+        add_header X-Content-Type-Options "nosniff";
+     
+        index index.php;
+     
+        charset utf-8;
+     
+        location / {
+            try_files $uri $uri/ /index.php?$query_string;
+        }
+     
+        location = /favicon.ico { access_log off; log_not_found off; }
+        location = /robots.txt  { access_log off; log_not_found off; }
+     
+        error_page 404 /index.php;
+     
+        location ~ ^/index\.php(/|$) {
+            fastcgi_hide_header X-Powered-By;
+
+            include fastcgi_params;
+            fastcgi_pass unix:/run/php-fpm/www.sock;
+
+            fastcgi_index index.php;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        }
+     
+        location ~ /\.(?!well-known).* {
+            deny all;
+        }
+    }
+```
 
 ## Route Definition
 
-To define a route, a PHP class is created in `app/controllers` that contains the page name. The file and class name must be in lowercase. The `run` method is automatically executed when the address is accessed.
+To define a route, a PHP class is created in `app/controllers` that contains the page name. The file and class name must be in lowercase. The `main` method is automatically executed when the address is accessed.
 
 Example for `example.com/contact`:
 
@@ -31,7 +78,7 @@ File content:
 ```
     class contact extends controller
     {
-        public function run()
+        public function main()
         {
             echo "Hello World!";
         }
