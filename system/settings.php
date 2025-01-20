@@ -38,7 +38,9 @@ class settings
     // Constants
     private static $debug    = 0;
 
-    private static $language = "tr_TR.UTF-8";
+    public static $logs      = 0;
+
+    private static $lang     = "tr_TR.UTF-8";
 
     private static $timezone = "Europe/Istanbul";
 
@@ -54,8 +56,6 @@ class settings
     public static $db_name   = "";
 
     // Defaults
-    public static $lang      = "tr";
-
     public static $index     = "index";
 
     public static $error     = "not_found";
@@ -65,7 +65,7 @@ class settings
         error_reporting(E_ALL);
         ini_set("display_errors", self::$debug);
 
-        setlocale(LC_ALL, self::$language);
+        setlocale(LC_ALL, self::$lang);
         date_default_timezone_set(self::$timezone);
 
         self::server();

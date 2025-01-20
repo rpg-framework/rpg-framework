@@ -5,6 +5,11 @@ class route
 
     public static function app()
     {
+        if (settings::$logs == 1)
+        {
+            log::access();
+        }
+
         require settings::$root."/app/base/controller.php";
 
         $get = stripos(settings::$uri, "?");
