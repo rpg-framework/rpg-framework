@@ -15,7 +15,7 @@ class log
         $request->request   = settings::$method." ".settings::$uri." ".settings::$protocol;
         $request->useragent = settings::$ua;
 
-        return json_encode($request, JSON_INVALID_UTF8_IGNORE || JSON_FORCE_OBJECT);
+        return json_encode($request, JSON_INVALID_UTF8_IGNORE);
     }
 
     public static function access()
@@ -27,7 +27,7 @@ class log
         );
     }
 
-    public static function access_logs($line = 10)
+    public static function access_logs($line = 10, $return = 0)
     {
         $log = file_get_contents
         (
@@ -35,12 +35,33 @@ class log
         );
 
         $parse = array_reverse(explode("\n", $log));
-        $build = implode(",", array_slice($parse, 0, $line + 2));
+        $build = implode(",", array_slice($parse, 1, $line));
 
         $access_logs = "[".ltrim($build, ",")."]";
-        header("Content-Type: application/json");
 
-        echo $access_logs;
+        if ($return == 1)
+        {
+            return self::obj(json_decode($access_logs));
+        }
+        else
+        {
+            header("Content-Type: application/json");
+            echo $access_logs;
+        }
+    }
+
+    public static function obj($array)
+    {
+        $data = new stdClass;
+        $super = "_";
+
+        foreach ($array as $key => $val)
+        {
+            $key = $super.$key;
+            $data->$key = $val;
+        }
+
+        return $data;
     }
 
 }
