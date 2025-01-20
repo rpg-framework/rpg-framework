@@ -10,7 +10,7 @@ class route
             log::access();
         }
 
-        require settings::$root."/app/base/controller.php";
+        require settings::$root."/app/root/controller.php";
 
         $get = stripos(settings::$uri, "?");
 

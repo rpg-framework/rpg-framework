@@ -3,6 +3,6 @@
 class controller extends rpg
 {
 
-    // Base Controller
+    // Root Controller
 
 }
