@@ -7,8 +7,8 @@ A small and fast PHP framework.
 System settings are defined in settings.php. The settings you can change are Constants, Database, and Defaults.
 
    * Constants → Timezone, language, and debug definitions.
-   * Database → Database connection information.
-   * Defaults → Project defaults.
+   * Database  → Database connection information.
+   * Defaults  → Project defaults.
 
 ## Root Directory
 
@@ -97,5 +97,8 @@ Defaults are located in `system/settings.php`. You can enter as many defaults as
 
 ## Examples
 
-  * Small scale project example - Documentation (Dual language [tr/en], Internal search, No database!)
-    For fixed and small projects, Corporate sites etc. fast development process. [rpg-docs](https://github.com/fuatboluk/rpg-docs)
+  * Small scale project example - Documentation (Dual language [tr/en], Internal search, No database!) Fast development process for fixed and small projects, Corporate sites etc. [rpg-docs](https://github.com/fuatboluk/rpg-docs)
+
+  * Medium scale project example - Blog (Dual language [tr/en], Database search, pagination, session and user management, comments and likes etc.) Coming soon!
+
+  * Large scale project example - E-Commerce (Dual language [tr/en], Database search, pagination, session and user management, comments and likes, notifications, admin panel etc.) Coming soon!
