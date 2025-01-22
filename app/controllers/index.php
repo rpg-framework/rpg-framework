@@ -8,8 +8,6 @@ class index extends controller
         $data = new stdClass;
 
         $data->title = "RPG Framework";
-        $data->background = "/assets/img/rpg-v1-background.jpg";
-
         $data->application = "rpg";
         $data->version = "1.0";
 
