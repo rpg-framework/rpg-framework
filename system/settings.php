@@ -36,9 +36,9 @@ class settings
     public static $clock;
 
     // Constants
-    private static $debug    = 0;
-
     public static $logs      = 0;
+
+    private static $debug    = 0;
 
     private static $lang     = "tr_TR.UTF-8";
 
@@ -58,7 +58,7 @@ class settings
     // Defaults
     public static $index     = "index";
 
-    public static $error     = "not_found";
+    public static $not_found = "not_found";
 
     public function __construct()
     {

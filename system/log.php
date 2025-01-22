@@ -12,15 +12,13 @@ class log
         $e_line = explode(":", $e_file[1]);
 
         $e_trace = rtrim($log[1], ":");
+        $e_stacks = '["'.implode('","', array_slice($log, 2)).'"]';
 
         $json  = '{';
         $json .= '"line":'.$e_line[1].',';
         $json .= '"status":"'.$e_all[0].'",';
         $json .= '"file":"'.$e_line[0].'",';
         $json .= '"message":"'.str_replace('"', '\"', $e_file[0]).'",';
-
-        $e_stacks = '["'.implode('","', array_slice($log, 2)).'"]';
-
         $json .= '"'.$e_trace.'":'.str_replace(",}]", "}]", $e_stacks);
         $json .= '}';
 

@@ -37,12 +37,12 @@ class route
                 }
                 else
                 {
-                    self::welcome();
+                    self::index();
                 }
             }
             else
             {
-                self::error();
+                self::not_found();
             }
         }
         else
@@ -63,12 +63,12 @@ class route
                 }
                 else
                 {
-                    self::welcome();
+                    self::index();
                 }
             }
             else
             {
-                self::error();
+                self::not_found();
             }
         }
         
@@ -88,17 +88,17 @@ class route
         }
     }
 
-    public static function welcome()
+    public static function index()
     {
         echo file_get_contents(settings::$root."/system/templates/index.html");
     }
 
-    public static function error()
+    public static function not_found()
     {
-        if (is_file(settings::$root."/app/controllers/".settings::$error.".php"))
+        if (is_file(settings::$root."/app/controllers/".settings::$not_found.".php"))
         {
-            require settings::$root."/app/controllers/".settings::$error.".php";
-            call_user_func([new settings::$error, "main"]);
+            require settings::$root."/app/controllers/".settings::$not_found.".php";
+            call_user_func([new settings::$not_found, "main"]);
         }
         else
         {

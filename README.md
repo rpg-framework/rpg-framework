@@ -89,8 +89,8 @@ The controller class is inherited from `app/base/controller.php`. This serves as
 
 ## Defaults
 
-Defaults are located in `system/settings.php`. You can enter as many defaults as you want in this field. There are two important variables in the defaults: the `$index` and `$error` variables.
+Defaults are located in `system/settings.php`. You can enter as many defaults as you want in this field. There are two important variables in the defaults: the `$index` and `$not_found` variables.
 
    * `$index`: The page that receives incoming links to your website. If you want your homepage to be accessed as `example.com` or `example.com/index`, do not change the default value. You need to create `app/controllers/index.php`.
 
-   * `$error`: The page that your website will call when an address is not found. The default value is `not_found`. You can call any error page you want by creating `app/controllers/not_found.php`.
+   * `$not_found`: The page that your website will call when an address is not found. The default value is `not_found`. You can call any error page you want by creating `app/controllers/not_found.php`.
