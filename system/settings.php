@@ -62,8 +62,10 @@ class settings
 
     public function __construct()
     {
-        error_reporting(E_ALL);
+        error_reporting(E_ERROR);
         ini_set("display_errors", self::$debug);
+
+        set_exception_handler("log::error_handler");
 
         setlocale(LC_ALL, self::$lang);
         date_default_timezone_set(self::$timezone);
