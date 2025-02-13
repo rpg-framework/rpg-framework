@@ -15,10 +15,13 @@ class log
         $e_stacks = '["'.implode('","', array_slice($log, 2)).'"]';
 
         $json  = '{';
-        $json .= '"line":'.$e_line[1].',';
+        $json .= '"line":'.($e_line[1] ? $e_line[1] : '""').',';
         $json .= '"status":"'.$e_all[0].'",';
         $json .= '"file":"'.$e_line[0].'",';
-        $json .= '"message":"'.str_replace('"', '\"', $e_file[0]).'",';
+        $json .= '"message":"'.str_replace('"', '\"', $e_file[0].(
+                $e_all[2] ? " ".$e_all[2] : ""
+            )
+        ).'",';
         $json .= '"'.$e_trace.'":'.str_replace(",}]", "}]", $e_stacks);
         $json .= '}';
 
